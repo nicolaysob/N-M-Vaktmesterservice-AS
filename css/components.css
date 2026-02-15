@@ -52,6 +52,11 @@
   padding: 1.25rem;
 }
 
+.cta-box {
+  display: flex;
+  flex-direction: column;
+}
+
 .service-card h3 {
   margin-bottom: 0.55rem;
   font-size: 1.18rem;
@@ -99,6 +104,10 @@
 .button-secondary:hover {
   border-color: var(--color-primary-dark);
   background: #f0f8fb;
+}
+
+.cta-box .button {
+  margin-top: auto;
 }
 
 .button-link {
