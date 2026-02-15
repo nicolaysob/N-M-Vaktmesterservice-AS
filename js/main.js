@@ -2,6 +2,42 @@ function getBasePath() {
   return window.location.pathname.includes('/tjenester/') ? '..' : '.';
 }
 
+function rewriteInternalPathsForSubdirectory() {
+  if (!window.location.pathname.includes('/tjenester/')) {
+    return;
+  }
+
+  const selectors = [
+    ['href', 'a[href], link[href]'],
+    ['src', '[src]'],
+  ];
+
+  selectors.forEach(([attribute, selector]) => {
+    document.querySelectorAll(selector).forEach((element) => {
+      const value = element.getAttribute(attribute);
+
+      if (!value) {
+        return;
+      }
+
+      if (
+        value.startsWith('../') ||
+        value.startsWith('./') ||
+        value.startsWith('#') ||
+        value.startsWith('http://') ||
+        value.startsWith('https://') ||
+        value.startsWith('mailto:') ||
+        value.startsWith('tel:') ||
+        value.startsWith('data:')
+      ) {
+        return;
+      }
+
+      element.setAttribute(attribute, `../${value}`);
+    });
+  });
+}
+
 async function loadPartial(targetId, partialPath) {
   const target = document.getElementById(targetId);
 
@@ -25,6 +61,8 @@ async function loadSharedLayout() {
     loadPartial('site-header', `${basePath}/partials/header.html`),
     loadPartial('site-footer', `${basePath}/partials/footer.html`),
   ]);
+
+  rewriteInternalPathsForSubdirectory();
 }
 
 async function fetchServices() {
