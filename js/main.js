@@ -83,6 +83,23 @@ function getServiceSlug() {
   return querySlug || fallbackSlug;
 }
 
+function setMetaTag(selector, value) {
+  const element = document.querySelector(selector);
+
+  if (element) {
+    element.setAttribute('content', value);
+  }
+}
+
+function updateServiceSeo({ title, description }) {
+  setMetaTag('meta[name="description"]', description);
+  setMetaTag('meta[property="og:title"]', title);
+  setMetaTag('meta[property="og:description"]', description);
+  setMetaTag('meta[property="og:url"]', window.location.href);
+  setMetaTag('meta[name="twitter:title"]', title);
+  setMetaTag('meta[name="twitter:description"]', description);
+}
+
 async function loadServiceContent() {
   const serviceTitle = document.getElementById('service-title');
   const serviceDescription = document.getElementById('service-description');
@@ -98,11 +115,18 @@ async function loadServiceContent() {
   const service = services.find((item) => item.slug === slug);
 
   if (!service) {
-    document.title = 'Tjeneste ikke funnet | N-M Vaktmesterservice AS';
-    serviceTitle.textContent = 'Tjeneste ikke funnet';
-    serviceDescription.textContent =
+    const notFoundTitle = 'Tjeneste ikke funnet | N&M Vaktmesterservice AS';
+    const notFoundDescription =
       'Beklager, vi fant ikke tjenesten du leter etter. Se oversikten over alle tjenester.';
+
+    document.title = notFoundTitle;
+    serviceTitle.textContent = 'Tjeneste ikke funnet';
+    serviceDescription.textContent = notFoundDescription;
     serviceHero.style.background = 'linear-gradient(180deg, #eef4f8 0%, #f6f8fb 100%)';
+    updateServiceSeo({
+      title: notFoundTitle,
+      description: notFoundDescription,
+    });
 
     if (serviceBackLink) {
       serviceBackLink.textContent = 'Tilbake til tjenester';
@@ -112,10 +136,16 @@ async function loadServiceContent() {
     return;
   }
 
-  document.title = `${service.title} | N-M Vaktmesterservice AS`;
+  const seoTitle = `${service.title} | N&M Vaktmesterservice AS`;
+
+  document.title = seoTitle;
   serviceTitle.textContent = service.title;
   serviceDescription.textContent = service.longDescription;
   serviceHero.style.backgroundColor = service.heroColor;
+  updateServiceSeo({
+    title: seoTitle,
+    description: service.longDescription,
+  });
 
   if (serviceBackLink) {
     serviceBackLink.textContent = 'Tilbake til tjenester';
