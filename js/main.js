@@ -98,7 +98,7 @@ async function loadServiceContent() {
   const service = services.find((item) => item.slug === slug);
 
   if (!service) {
-    document.title = 'Tjeneste ikke funnet | N-M Vaktmesterservice AS';
+    document.title = 'Tjeneste ikke funnet | N&M Vaktmesterservice AS';
     serviceTitle.textContent = 'Tjeneste ikke funnet';
     serviceDescription.textContent =
       'Beklager, vi fant ikke tjenesten du leter etter. Se oversikten over alle tjenester.';
@@ -112,7 +112,7 @@ async function loadServiceContent() {
     return;
   }
 
-  document.title = `${service.title} | N-M Vaktmesterservice AS`;
+  document.title = `${service.title} | N&M Vaktmesterservice AS`;
   serviceTitle.textContent = service.title;
   serviceDescription.textContent = service.longDescription;
   serviceHero.style.backgroundColor = service.heroColor;
