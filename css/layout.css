@@ -31,14 +31,21 @@
   font-weight: 600;
 }
 
-.hero,
 .services,
 .cta {
   padding: clamp(3rem, 6vw, 5rem) 0;
 }
 
+.hero {
+  min-height: 500px;
+  height: 85vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(2.5rem, 6vw, 5rem) 0;
+}
+
 .hero-content {
-  max-width: 760px;
+  max-width: 600px;
 }
 
 .hero-actions {
@@ -80,6 +87,12 @@
 }
 
 @media (max-width: 760px) {
+  .hero {
+    height: auto;
+    min-height: 500px;
+    background-position: 72% center;
+  }
+
   .header-inner {
     flex-direction: column;
     align-items: flex-start;
