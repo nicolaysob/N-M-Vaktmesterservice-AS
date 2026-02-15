@@ -115,8 +115,9 @@ async function loadServiceContent() {
   const service = services.find((item) => item.slug === slug);
 
   if (!service) {
-    const notFoundTitle = 'Tjeneste ikke funnet | N&M Vaktmesterservice AS';
-    const notFoundDescription =
+    document.title = 'Tjeneste ikke funnet | N&M Vaktmesterservice AS';
+    serviceTitle.textContent = 'Tjeneste ikke funnet';
+    serviceDescription.textContent =
       'Beklager, vi fant ikke tjenesten du leter etter. Se oversikten over alle tjenester.';
 
     document.title = notFoundTitle;
