@@ -6,7 +6,13 @@
 }
 
 .hero {
-  background: linear-gradient(180deg, #eef4f8 0%, #f6f8fb 100%);
+  position: relative;
+  color: #ffffff;
+  background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.45) 100%),
+    url("../assets/images/hero-vakt.jpg");
+  background-size: cover;
+  background-position: 65% center;
+  background-repeat: no-repeat;
 }
 
 .hero-kicker,
@@ -25,10 +31,11 @@
 .hero h1 {
   font-size: clamp(1.85rem, 4.2vw, 3rem);
   margin-bottom: 0.8rem;
+  color: #ffffff;
 }
 
 .hero-subtitle {
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.95);
   max-width: 62ch;
   font-size: 1.05rem;
 }
@@ -72,7 +79,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  border-radius: var(--radius-md);
+  border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.65rem 1.05rem;
   font-weight: 700;
@@ -86,24 +93,24 @@
 }
 
 .button-primary {
-  background: var(--color-primary);
+  background: #f37021;
   color: #ffffff;
-  box-shadow: 0 8px 18px rgba(31, 111, 139, 0.25);
+  box-shadow: 0 10px 24px rgba(243, 112, 33, 0.35);
 }
 
 .button-primary:hover {
-  background: var(--color-primary-dark);
+  background: #dd621c;
 }
 
 .button-secondary {
-  background: #ffffff;
-  border-color: #b8d3dd;
-  color: var(--color-primary-dark);
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.92);
+  color: #ffffff;
 }
 
 .button-secondary:hover {
-  border-color: var(--color-primary-dark);
-  background: #f0f8fb;
+  border-color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
 }
 
 .cta-box .button {
