@@ -175,3 +175,43 @@
 .hidden {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .hero {
+    height: 68vh;
+    min-height: 540px;
+    background-image:
+      linear-gradient(to bottom, rgba(0,0,0,0.68), rgba(0,0,0,0.55)),
+      url("../assets/images/hero-vakt.jpg");
+    background-size: cover;
+    background-position: 30% 45%;
+    background-repeat: no-repeat;
+  }
+
+  .hero-content {
+    max-width: 92%;
+    padding: 0 16px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 6vw, 2.5rem);
+    line-height: 1.1;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+
+  .hero-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .hero-actions a {
+    width: 100%;
+    text-align: center;
+  }
+}
