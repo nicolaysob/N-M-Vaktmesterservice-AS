@@ -91,11 +91,26 @@ function setMetaTag(selector, value) {
   }
 }
 
+
+function updateCanonicalAndOgUrl(includeSearch = false) {
+  const canonicalLink = document.getElementById('canonical-link');
+  const ogUrl = document.getElementById('og-url');
+  const baseUrl = `${window.location.origin}${window.location.pathname}`;
+  const finalUrl = includeSearch ? `${baseUrl}${window.location.search}` : baseUrl;
+
+  if (canonicalLink) {
+    canonicalLink.setAttribute('href', finalUrl);
+  }
+
+  if (ogUrl) {
+    ogUrl.setAttribute('content', finalUrl);
+  }
+}
+
 function updateServiceSeo({ title, description }) {
   setMetaTag('meta[name="description"]', description);
   setMetaTag('meta[property="og:title"]', title);
   setMetaTag('meta[property="og:description"]', description);
-  setMetaTag('meta[property="og:url"]', window.location.href);
   setMetaTag('meta[name="twitter:title"]', title);
   setMetaTag('meta[name="twitter:description"]', description);
 }
@@ -112,6 +127,7 @@ async function loadServiceContent() {
 
   const services = await fetchServices();
   const slug = getServiceSlug();
+  const hasSlugInUrl = new URLSearchParams(window.location.search).has('slug');
   const service = services.find((item) => item.slug === slug);
 
   if (!service) {
@@ -128,6 +144,7 @@ async function loadServiceContent() {
       title: notFoundTitle,
       description: notFoundDescription,
     });
+    updateCanonicalAndOgUrl(hasSlugInUrl);
 
     if (serviceBackLink) {
       serviceBackLink.textContent = 'Tilbake til tjenester';
@@ -147,6 +164,7 @@ async function loadServiceContent() {
     title: seoTitle,
     description: service.longDescription,
   });
+  updateCanonicalAndOgUrl(hasSlugInUrl);
 
   if (serviceBackLink) {
     serviceBackLink.textContent = 'Tilbake til tjenester';
@@ -199,6 +217,7 @@ function initContactFormSource() {
 
 async function init() {
   try {
+    updateCanonicalAndOgUrl();
     await loadSharedLayout();
     await Promise.all([loadServiceContent(), loadServicesList()]);
     initContactFormSource();
