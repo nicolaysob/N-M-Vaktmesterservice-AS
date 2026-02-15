@@ -144,10 +144,33 @@ async function loadServicesList() {
   servicesList.innerHTML = services.map(createServiceCard).join('');
 }
 
+
+function initContactFormSource() {
+  const sourceInput = document.getElementById('source');
+  const customerTypeGroup = document.getElementById('customerTypeGroup');
+  const customerTypeSelect = document.getElementById('customerType');
+
+  if (!sourceInput || !customerTypeGroup || !customerTypeSelect) {
+    return;
+  }
+
+  const source = new URLSearchParams(window.location.search).get('source') || '';
+  sourceInput.value = source;
+
+  const isBusinessFlow = source === 'bedrift';
+  customerTypeGroup.classList.toggle('hidden', !isBusinessFlow);
+  customerTypeSelect.required = isBusinessFlow;
+
+  if (!isBusinessFlow) {
+    customerTypeSelect.value = '';
+  }
+}
+
 async function init() {
   try {
     await loadSharedLayout();
     await Promise.all([loadServiceContent(), loadServicesList()]);
+    initContactFormSource();
   } catch (error) {
     console.error(error);
   }

@@ -28,6 +28,7 @@
             action="https://formspree.io/f/mykdepdl"
             method="POST"
           >
+            <input type="hidden" name="source" id="source" value="" />
             <label for="name">Navn</label>
             <input id="name" name="name" type="text" required />
 
@@ -36,6 +37,17 @@
 
             <label for="phone">Telefon</label>
             <input id="phone" name="phone" type="tel" />
+
+
+            <div class="form-group hidden" id="customerTypeGroup">
+              <label for="customerType">Type kunde</label>
+              <select id="customerType" name="customerType">
+                <option value="">Velg…</option>
+                <option value="Næring">Næring</option>
+                <option value="Borettslag">Borettslag</option>
+                <option value="Sameie">Sameie</option>
+              </select>
+            </div>
 
             <label for="message">Melding</label>
             <textarea id="message" name="message" rows="6" required></textarea>
