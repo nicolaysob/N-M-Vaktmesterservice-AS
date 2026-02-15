@@ -56,9 +56,15 @@
 
 .cta-boxes,
 .cta-grid {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
   gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+}
+
+.cta-boxes > *,
+.cta-grid > * {
+  flex: 1 1 260px;
 }
 
 .site-footer {
