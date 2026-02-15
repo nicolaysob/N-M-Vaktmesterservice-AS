@@ -1,3 +1,70 @@
-/* Global reset */
+:root {
+  --color-bg: #f6f8fb;
+  --color-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-muted: #52606d;
+  --color-border: #d9e1ea;
+  --color-primary: #1f6f8b;
+  --color-primary-dark: #195d75;
+  --color-secondary: #0f766e;
+  --color-secondary-dark: #0c5f58;
+  --color-focus: #0ea5e9;
+  --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --max-width: 1120px;
+}
 
-/* Typography */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 0.6em;
+  line-height: 1.2;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 3px;
+}
