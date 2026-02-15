@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt | N-M Vaktmesterservice AS</title>
+    <meta
+      name="description"
+      content="Ta kontakt med N-M Vaktmesterservice AS for spørsmål, tilbud eller befaring."
+    />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/layout.css" />
+    <link rel="stylesheet" href="css/components.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <main>
+      <section class="services" aria-labelledby="contact-title">
+        <div class="container contact-container">
+          <h1 id="contact-title">Kontakt oss</h1>
+          <p>
+            Send oss en henvendelse, så tar vi kontakt så snart som mulig.
+          </p>
+
+          <form
+            class="contact-form"
+            action="https://formspree.io/f/mykdepdl"
+            method="POST"
+          >
+            <label for="name">Navn</label>
+            <input id="name" name="name" type="text" required />
+
+            <label for="email">E-post</label>
+            <input id="email" name="email" type="email" required />
+
+            <label for="phone">Telefon</label>
+            <input id="phone" name="phone" type="tel" />
+
+            <label for="message">Melding</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <label class="consent-field" for="consent">
+              <input id="consent" name="consent" type="checkbox" value="ja" required />
+              <span>
+                Jeg samtykker til at N&amp;M Vaktmesterservice AS lagrer og behandler mine
+                opplysninger for å kunne kontakte meg angående min henvendelse.
+                <a href="/personvern.html">Les personvernerklæringen</a>.
+              </span>
+            </label>
+
+            <button class="button button-primary" type="submit">Send henvendelse</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

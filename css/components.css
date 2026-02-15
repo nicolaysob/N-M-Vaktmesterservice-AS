@@ -112,3 +112,45 @@
 .button-link:hover {
   color: var(--color-primary-dark);
 }
+
+.contact-container,
+.privacy-container {
+  max-width: 760px;
+}
+
+.contact-form {
+  display: grid;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.65rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font: inherit;
+  color: var(--color-text);
+  background: #ffffff;
+}
+
+.contact-form textarea {
+  resize: vertical;
+}
+
+.consent-field {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+}
+
+.consent-field input {
+  width: auto;
+  margin-top: 0.25rem;
+}
+
+.consent-field a {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
