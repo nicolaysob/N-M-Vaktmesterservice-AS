@@ -27,21 +27,7 @@ async function loadSharedLayout() {
   ]);
 }
 
-function getServiceSlugFromPath() {
-  const pathName = window.location.pathname;
-  const fileName = pathName.split('/').pop() || '';
-  return fileName.replace('.html', '');
-}
-
-async function loadServiceContent() {
-  const serviceTitle = document.getElementById('service-title');
-  const serviceDescription = document.getElementById('service-description');
-  const serviceHero = document.getElementById('service-hero');
-
-  if (!serviceTitle || !serviceDescription || !serviceHero) {
-    return;
-  }
-
+async function fetchServices() {
   const basePath = getBasePath();
   const response = await fetch(`${basePath}/data/services.json`);
 
@@ -49,23 +35,81 @@ async function loadServiceContent() {
     throw new Error('Kunne ikke laste tjenestedata');
   }
 
-  const services = await response.json();
-  const slug = getServiceSlugFromPath();
-  const service = services.find((item) => item.slug === slug);
+  return response.json();
+}
 
-  if (!service) {
+function getServiceSlug() {
+  const querySlug = new URLSearchParams(window.location.search).get('slug');
+  const fallbackSlug = document.body.dataset.slug || '';
+
+  return querySlug || fallbackSlug;
+}
+
+async function loadServiceContent() {
+  const serviceTitle = document.getElementById('service-title');
+  const serviceDescription = document.getElementById('service-description');
+  const serviceHero = document.getElementById('service-hero');
+  const serviceBackLink = document.getElementById('service-back-link');
+
+  if (!serviceTitle || !serviceDescription || !serviceHero) {
     return;
   }
 
+  const services = await fetchServices();
+  const slug = getServiceSlug();
+  const service = services.find((item) => item.slug === slug);
+
+  if (!service) {
+    document.title = 'Tjeneste ikke funnet | N-M Vaktmesterservice AS';
+    serviceTitle.textContent = 'Tjeneste ikke funnet';
+    serviceDescription.textContent =
+      'Beklager, vi fant ikke tjenesten du leter etter. Se oversikten over alle tjenester.';
+    serviceHero.style.background = 'linear-gradient(180deg, #eef4f8 0%, #f6f8fb 100%)';
+
+    if (serviceBackLink) {
+      serviceBackLink.textContent = 'Tilbake til tjenester';
+      serviceBackLink.setAttribute('href', './index.html');
+    }
+
+    return;
+  }
+
+  document.title = `${service.title} | N-M Vaktmesterservice AS`;
   serviceTitle.textContent = service.title;
   serviceDescription.textContent = service.longDescription;
   serviceHero.style.backgroundColor = service.heroColor;
+
+  if (serviceBackLink) {
+    serviceBackLink.textContent = 'Tilbake til tjenester';
+    serviceBackLink.setAttribute('href', './index.html');
+  }
+}
+
+function createServiceCard(service) {
+  return `
+    <article class="service-card">
+      <h3>${service.title}</h3>
+      <p>${service.shortDescription}</p>
+      <a class="button button-link" href="./service.html?slug=${encodeURIComponent(service.slug)}">Les mer</a>
+    </article>
+  `;
+}
+
+async function loadServicesList() {
+  const servicesList = document.getElementById('services-list');
+
+  if (!servicesList) {
+    return;
+  }
+
+  const services = await fetchServices();
+  servicesList.innerHTML = services.map(createServiceCard).join('');
 }
 
 async function init() {
   try {
     await loadSharedLayout();
-    await loadServiceContent();
+    await Promise.all([loadServiceContent(), loadServicesList()]);
   } catch (error) {
     console.error(error);
   }
