@@ -4,27 +4,27 @@
     "title": "Vaktmestertjenester",
     "shortDescription": "Vi sørger for løpende drift, ettersyn og vedlikehold av eiendommen din.",
     "longDescription": "Våre vaktmestertjenester dekker det daglige behovet for tilsyn og oppfølging av bygg og uteområder. Vi utfører jevnlige kontroller, mindre vedlikeholdsoppgaver og rask håndtering av praktiske utfordringer. Med faste rutiner bidrar vi til tryggere, mer velholdte og funksjonelle eiendommer. Tjenesten tilpasses både borettslag, næringsbygg og private eiere.",
-    "page": "/tjenester/vaktmestertjenester.html"
+    "heroColor": "#2f5d8c"
   },
   {
     "slug": "sesongtjenester",
     "title": "Sesongtjenester",
     "shortDescription": "Vi håndterer sesongbaserte oppgaver gjennom hele året.",
     "longDescription": "Sesongtjenestene våre gjør overgangen mellom årstidene enklere for deg som eiendomsansvarlig. Vi tilbyr blant annet snørydding, strøing, løvoppsamling og klargjøring av uteområder. Arbeidet planlegges i forkant slik at eiendommen holder høy standard uansett værforhold. Dette gir både trygghet for brukerne og mindre administrasjon for deg.",
-    "page": "/tjenester/sesongtjenester.html"
+    "heroColor": "#3d7a52"
   },
   {
     "slug": "renholdstjenester",
     "title": "Renholdstjenester",
     "shortDescription": "Vi leverer grundig og stabilt renhold for fellesarealer og næringslokaler.",
     "longDescription": "Med våre renholdstjenester får du rene og innbydende lokaler som gir et godt førsteinntrykk. Vi tilpasser frekvens og innhold etter behov, enten det gjelder daglig renhold eller periodisk hovedrengjøring. Våre rutiner sikrer jevn kvalitet og god hygiene i alle soner. Resultatet er et triveligere miljø for både beboere, ansatte og besøkende.",
-    "page": "/tjenester/renholdstjenester.html"
+    "heroColor": "#5e4a8c"
   },
   {
     "slug": "forefallende-arbeid",
     "title": "Forefallende arbeid",
     "shortDescription": "Vi hjelper med praktiske småjobber som holder eiendommen i god stand.",
     "longDescription": "Forefallende arbeid dekker de små, men viktige oppgavene som dukker opp i hverdagen. Vi utfører enkle reparasjoner, montering, justeringer og andre praktiske tiltak ved behov. Oppgavene løses effektivt og med fokus på kvalitet i utførelsen. Slik slipper du å koordinere flere leverandører for mindre jobber.",
-    "page": "/tjenester/forefallende-arbeid.html"
+    "heroColor": "#8a5a3a"
   }
 ]
