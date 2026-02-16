@@ -9,7 +9,7 @@ function getBasePath() {
 }
 
 function rewriteInternalPathsForSubdirectory() {
-  if (!window.location.pathname.includes('/tjenester/')) {
+  if (!window.location.pathname.includes('/tjenester/') && !window.location.pathname.includes('/kontakt/')) {
     return;
   }
 

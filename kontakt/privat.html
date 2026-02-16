@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakt oss – privat | N&amp;M Vaktmesterservice AS</title>
+    <meta
+      name="description"
+      content="Send forespørsel som privatkunde til N&amp;M Vaktmesterservice AS for hjelp med vedlikehold, uteområder og praktiske oppgaver."
+    />
+    <meta property="og:title" content="Kontakt oss – privat | N&amp;M Vaktmesterservice AS" />
+    <meta
+      property="og:description"
+      content="Send forespørsel som privatkunde til N&amp;M Vaktmesterservice AS for hjelp med vedlikehold, uteområder og praktiske oppgaver."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" id="canonical-link" href="" />
+    <meta property="og:url" id="og-url" content="" />
+    <meta property="og:image" content="https://nicolaysob.github.io/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Kontakt oss – privat | N&amp;M Vaktmesterservice AS" />
+    <meta
+      name="twitter:description"
+      content="Send forespørsel som privatkunde til N&amp;M Vaktmesterservice AS for hjelp med vedlikehold, uteområder og praktiske oppgaver."
+    />
+    <meta name="twitter:image" content="https://nicolaysob.github.io/assets/og-image.png" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <main>
+      <section class="services" aria-labelledby="contact-private-title">
+        <div class="container contact-container">
+          <h1 id="contact-private-title">Kontakt oss – privat</h1>
+          <p>Skjemaet er merket som <strong>Privat</strong>.</p>
+
+          <form class="contact-form" action="https://formspree.io/f/mykdepdl" method="POST">
+            <input type="hidden" name="inquiryType" value="Privat" />
+
+            <label for="name">Navn</label>
+            <input id="name" name="name" type="text" required />
+
+            <label for="phone">Telefon</label>
+            <input id="phone" name="phone" type="tel" required />
+
+            <label for="location">Adresse / sted</label>
+            <input id="location" name="location" type="text" required />
+
+            <label for="message">Hva trenger du hjelp med?</label>
+            <textarea id="message" name="message" rows="6" required></textarea>
+
+            <label class="consent-field" for="consent">
+              <input id="consent" name="consent" type="checkbox" value="ja" required />
+              <span>
+                Jeg samtykker til at N&amp;M Vaktmesterservice AS lagrer og behandler mine
+                opplysninger for å kunne kontakte meg angående min henvendelse.
+                <a href="../personvern.html">Les personvernerklæringen</a>.
+              </span>
+            </label>
+
+            <button class="button button-primary" type="submit">Send forespørsel (privat)</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>

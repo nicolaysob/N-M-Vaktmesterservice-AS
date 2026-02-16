@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="no">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Be om tilbud – enkeltoppdrag | N&amp;M Vaktmesterservice AS</title>
+    <meta
+      name="description"
+      content="Be om tilbud på enkeltoppdrag for borettslag, sameier og næring hos N&amp;M Vaktmesterservice AS."
+    />
+    <meta property="og:title" content="Be om tilbud – enkeltoppdrag | N&amp;M Vaktmesterservice AS" />
+    <meta
+      property="og:description"
+      content="Be om tilbud på enkeltoppdrag for borettslag, sameier og næring hos N&amp;M Vaktmesterservice AS."
+    />
+    <meta property="og:type" content="website" />
+    <link rel="canonical" id="canonical-link" href="" />
+    <meta property="og:url" id="og-url" content="" />
+    <meta property="og:image" content="https://nicolaysob.github.io/assets/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Be om tilbud – enkeltoppdrag | N&amp;M Vaktmesterservice AS" />
+    <meta
+      name="twitter:description"
+      content="Be om tilbud på enkeltoppdrag for borettslag, sameier og næring hos N&amp;M Vaktmesterservice AS."
+    />
+    <meta name="twitter:image" content="https://nicolaysob.github.io/assets/og-image.png" />
+    <link rel="stylesheet" href="../css/base.css" />
+    <link rel="stylesheet" href="../css/layout.css" />
+    <link rel="stylesheet" href="../css/components.css" />
+  </head>
+  <body>
+    <div id="site-header"></div>
+
+    <main>
+      <section class="services" aria-labelledby="contact-single-title">
+        <div class="container contact-container">
+          <h1 id="contact-single-title">Be om tilbud – enkeltoppdrag</h1>
+          <p>Skjemaet er merket som <strong>Enkeltoppdrag</strong>.</p>
+
+          <form class="contact-form" action="https://formspree.io/f/mykdepdl" method="POST">
+            <input type="hidden" name="inquiryType" value="Enkeltoppdrag" />
+
+            <label for="contactPerson">Kontaktperson</label>
+            <input id="contactPerson" name="contactPerson" type="text" required />
+
+            <label for="company">Firma/borettslag/sameie</label>
+            <input id="company" name="company" type="text" required />
+
+            <label for="contactDetails">Telefon / e-post</label>
+            <input id="contactDetails" name="contactDetails" type="text" required />
+
+            <label for="location">Adresse / lokasjon</label>
+            <input id="location" name="location" type="text" required />
+
+            <label for="workScope">Hva skal gjøres?</label>
+            <textarea id="workScope" name="workScope" rows="6" required></textarea>
+
+            <label for="period">Ønsket tidsrom (valgfritt)</label>
+            <input id="period" name="period" type="text" />
+
+            <label class="consent-field" for="consent">
+              <input id="consent" name="consent" type="checkbox" value="ja" required />
+              <span>
+                Jeg samtykker til at N&amp;M Vaktmesterservice AS lagrer og behandler mine
+                opplysninger for å kunne kontakte meg angående min henvendelse.
+                <a href="../personvern.html">Les personvernerklæringen</a>.
+              </span>
+            </label>
+
+            <button class="button button-primary" type="submit">Be om tilbud (enkeltoppdrag)</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="../js/main.js"></script>
+  </body>
+</html>
