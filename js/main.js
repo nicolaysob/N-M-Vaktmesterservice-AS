@@ -73,10 +73,19 @@ async function loadSharedLayout() {
 
 async function fetchServices() {
   const basePath = getBasePath();
-  const response = await fetch(`${basePath}data/services.json`);
+  let response;
+
+  try {
+    response = await fetch(`${basePath}data/services.json?v=${Date.now()}`, { cache: 'no-store' });
+  } catch (error) {
+    console.error('Kunne ikke hente data/services.json.', error);
+    throw error;
+  }
 
   if (!response.ok) {
-    throw new Error('Kunne ikke laste tjenestedata');
+    const fetchError = new Error(`Kunne ikke laste tjenestedata (status ${response.status})`);
+    console.error('Kunne ikke laste data/services.json.', fetchError);
+    throw fetchError;
   }
 
   return response.json();
@@ -120,10 +129,15 @@ function updateServiceSeo({ title, description }) {
 
 async function loadServiceContent() {
   const serviceTitle = document.getElementById('service-title');
+  const serviceIntro = document.getElementById('service-intro');
   const serviceDescription = document.getElementById('service-description');
+  const serviceBullets = document.getElementById('service-bullets');
   const serviceBackLink = document.getElementById('service-back-link');
 
-  if (!serviceTitle || !serviceDescription) {
+  if (!serviceTitle || !serviceIntro || !serviceDescription || !serviceBullets) {
+    console.error(
+      'Mangler påkrevde DOM-elementer på tjenestesiden: #service-title, #service-intro, #service-description eller #service-bullets.',
+    );
     return;
   }
 
@@ -137,9 +151,13 @@ async function loadServiceContent() {
     const notFoundTitle = 'Tjeneste ikke funnet | N&M Vaktmesterservice AS';
     const notFoundDescription = 'Beklager, vi fant ikke tjenesten du leter etter.';
 
+    console.error(`Fant ingen tjeneste med slug "${slug}" i services.json.`);
     document.title = notFoundTitle;
     serviceTitle.textContent = 'Tjeneste ikke funnet';
+    serviceIntro.textContent = '';
     serviceDescription.textContent = notFoundDescription;
+    serviceBullets.innerHTML = '';
+    serviceBullets.hidden = true;
     updateServiceSeo({
       title: notFoundTitle,
       description: notFoundDescription,
@@ -158,7 +176,14 @@ async function loadServiceContent() {
 
   document.title = seoTitle;
   serviceTitle.textContent = service.title;
-  serviceDescription.textContent = service.longDescription;
+  serviceIntro.textContent = service.shortDescription || '';
+  serviceDescription.textContent = service.longDescription || '';
+
+  const bullets = Array.isArray(service.bullets) ? service.bullets.filter(Boolean) : [];
+
+  serviceBullets.innerHTML = bullets.map((bullet) => `<li>${bullet}</li>`).join('');
+  serviceBullets.hidden = bullets.length === 0;
+
   updateServiceSeo({
     title: seoTitle,
     description: service.longDescription,
