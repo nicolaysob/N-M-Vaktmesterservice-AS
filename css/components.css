@@ -2,7 +2,7 @@
   font-size: 1.02rem;
   font-weight: 800;
   letter-spacing: 0.01em;
-  color: var(--color-primary-dark);
+  color: #111111;
 }
 
 .hero {
@@ -93,13 +93,14 @@
 }
 
 .button-primary {
-  background: #f37021;
+  background: #2e7d32;
   color: #ffffff;
-  box-shadow: 0 10px 24px rgba(243, 112, 33, 0.35);
+  border-radius: 8px;
+  box-shadow: 0 10px 24px rgba(46, 125, 50, 0.35);
 }
 
 .button-primary:hover {
-  background: #dd621c;
+  background: #1b5e20;
 }
 
 .button-secondary {
@@ -121,12 +122,12 @@
   padding: 0;
   border: 0;
   background: none;
-  color: var(--color-primary);
+  color: #2e7d32;
   font-weight: 700;
 }
 
 .button-link:hover {
-  color: var(--color-primary-dark);
+  color: #1b5e20;
 }
 
 .contact-container,
