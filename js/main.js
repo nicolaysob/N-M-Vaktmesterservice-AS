@@ -1,5 +1,11 @@
 function getBasePath() {
-  return window.location.pathname.includes('/tjenester/') ? '..' : '.';
+  if (window.location.hostname.endsWith('github.io')) {
+    const [firstSegment = ''] = window.location.pathname.split('/').filter(Boolean);
+
+    return firstSegment ? `/${firstSegment}/` : '/';
+  }
+
+  return '/';
 }
 
 function rewriteInternalPathsForSubdirectory() {
@@ -58,8 +64,8 @@ async function loadSharedLayout() {
   const basePath = getBasePath();
 
   await Promise.all([
-    loadPartial('site-header', `${basePath}/partials/header.html`),
-    loadPartial('site-footer', `${basePath}/partials/footer.html`),
+    loadPartial('site-header', `${basePath}partials/header.html`),
+    loadPartial('site-footer', `${basePath}partials/footer.html`),
   ]);
 
   rewriteInternalPathsForSubdirectory();
@@ -67,7 +73,7 @@ async function loadSharedLayout() {
 
 async function fetchServices() {
   const basePath = getBasePath();
-  const response = await fetch(`${basePath}/data/services.json`);
+  const response = await fetch(`${basePath}data/services.json`);
 
   if (!response.ok) {
     throw new Error('Kunne ikke laste tjenestedata');
@@ -122,6 +128,7 @@ async function loadServiceContent() {
   }
 
   const services = await fetchServices();
+  const basePath = getBasePath();
   const slug = getServiceSlug();
   const hasSlugInUrl = new URLSearchParams(window.location.search).has('slug');
   const service = services.find((item) => item.slug === slug);
@@ -141,7 +148,7 @@ async function loadServiceContent() {
 
     if (serviceBackLink) {
       serviceBackLink.textContent = 'Tilbake til tjenester';
-      serviceBackLink.setAttribute('href', 'index.html');
+      serviceBackLink.setAttribute('href', `${basePath}tjenester/index.html`);
     }
 
     return;
@@ -160,16 +167,18 @@ async function loadServiceContent() {
 
   if (serviceBackLink) {
     serviceBackLink.textContent = 'Tilbake til tjenester';
-    serviceBackLink.setAttribute('href', 'index.html');
+    serviceBackLink.setAttribute('href', `${basePath}tjenester/index.html`);
   }
 }
 
 function createServiceCard(service) {
+  const basePath = getBasePath();
+
   return `
     <article class="service-card">
       <h3>${service.title}</h3>
       <p>${service.shortDescription}</p>
-      <a class="button button-link" href="./service.html?slug=${encodeURIComponent(service.slug)}">Les mer</a>
+      <a class="button button-link" href="${basePath}tjenester/service.html?slug=${encodeURIComponent(service.slug)}">Les mer</a>
     </article>
   `;
 }
