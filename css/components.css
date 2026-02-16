@@ -64,6 +64,11 @@
   padding: 1.25rem;
 }
 
+.service-card {
+  display: flex;
+  flex-direction: column;
+}
+
 .cta-box {
   display: flex;
   flex-direction: column;
@@ -78,6 +83,11 @@
 .cta-box p,
 .footer-inner p {
   color: var(--color-muted);
+}
+
+.service-card .button-link {
+  margin-top: auto;
+  align-self: flex-start;
 }
 
 .button {
