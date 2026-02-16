@@ -2,29 +2,57 @@
   {
     "slug": "vaktmestertjenester",
     "title": "Vaktmestertjenester",
-    "shortDescription": "Vi sørger for løpende drift, ettersyn og vedlikehold av eiendommen din.",
-    "longDescription": "Våre vaktmestertjenester dekker det daglige behovet for tilsyn og oppfølging av bygg og uteområder. Vi gjennomfører faste runder, utfører mindre vedlikeholdsoppgaver og sørger for at eiendommen fremstår trygg, funksjonell og representativ. Små avvik tas tidlig, før de utvikler seg til større og mer kostbare problemer. Tjenesten passer for borettslag, sameier, næringsbygg og private eiere som ønsker forutsigbar drift og rask respons.",
+    "shortDescription": "Løpende tilsyn og praktisk drift som holder eiendommen trygg, ryddig og i god stand.",
+    "longDescription": "Vi tar hånd om den daglige driften av eiendom – med faste runder, enkel feilretting og tydelig oppfølging. Målet er å oppdage små avvik tidlig, slik at dere unngår unødvendige kostnader og irritasjon. Vi jobber strukturert, dokumenterer ved behov og gir beskjed før små problemer blir store. Dette passer spesielt godt for borettslag/sameier, næringseiendom og private utleiere som ønsker en stabil, forutsigbar vaktmester.",
+    "bullets": [
+      "Tilsynsrunder inne/ute og enkel rapportering",
+      "Småreparasjoner og utbedringer (dører, hengsler, beslag, skilt m.m.)",
+      "Avfall/ryddeoppgaver og enklere ordenstiltak",
+      "Kontroll av fellesarealer og tekniske rom (visuell sjekk)",
+      "Koordinering med leverandører ved behov"
+    ],
     "heroColor": "#2f5d8c"
   },
   {
     "slug": "sesongtjenester",
     "title": "Sesongtjenester",
-    "shortDescription": "Vi håndterer sesongrelaterte oppgaver gjennom hele året.",
-    "longDescription": "Sesongtjenestene våre sikrer at eiendommen fungerer optimalt gjennom hele året. Vi håndterer blant annet snørydding, strøing, løvoppsamling og klargjøring av uteområder ved sesongskifter. Arbeidet planlegges og utføres strukturert slik at beboere og brukere opplever trygg ferdsel og et ryddig utemiljø. Vi tilpasser omfang og frekvens etter behov og avtale.",
+    "shortDescription": "Sesongbaserte tiltak som sikrer trygg ferdsel og pen eiendom – hele året.",
+    "longDescription": "Sesongarbeid handler om mer enn å “ta det når det skjer”. Vi planlegger og gjennomfører tiltak som gjør eiendommen trygg og presentabel i perioder med høy belastning – vinter, vår og høst. Dere får forutsigbarhet, og beboere/brukere får et uteområde som fungerer. Vi tilpasser omfang etter budsjett, areal og behov.",
+    "bullets": [
+      "Snørydding og strøing (etter avtale)",
+      "Vår- og høstopprydding",
+      "Løvblåsing og bortkjøring",
+      "Enklere skjøtsel av uteområder",
+      "Klargjøring av fellesarealer før/etter sesong"
+    ],
     "heroColor": "#3d7a52"
   },
   {
     "slug": "renholdstjenester",
     "title": "Renholdstjenester",
-    "shortDescription": "Vi leverer grundig og stabilt renhold av fellesarealer og lokaler.",
-    "longDescription": "Vi leverer grundig og stabilt renhold av fellesarealer og næringslokaler. Gjennom faste rutiner og kvalitetssikring sørger vi for rene inngangspartier, trapperom og oppholdsarealer som gir et godt førsteinntrykk. Vi tilpasser frekvens og innhold etter eiendommens behov, enten det gjelder daglig, ukentlig eller periodisk renhold.",
+    "shortDescription": "Stabilt renhold av fellesarealer og lokaler – med fokus på kvalitet og rutine.",
+    "longDescription": "Vi leverer renhold som faktisk holder standard over tid. Gjennom faste intervaller og tydelig sjekkliste sikrer vi at inngangsparti, trapperom, fellesarealer og øvrige flater fremstår ryddige og hygieniske. Vi jobber effektivt, tar hensyn til brukere/beboere og følger opp avtaler punktlig. Egner seg for borettslag/sameier, kontor- og næringslokaler samt mindre private oppdrag.",
+    "bullets": [
+      "Renhold av trapperom og inngangsparti",
+      "Støvsuging/mopping av fellesarealer",
+      "Avtørking av flater og kontaktpunkter",
+      "Enklere vinduspuss etter avtale",
+      "Periodisk grundigere renhold ved behov"
+    ],
     "heroColor": "#5e4a8c"
   },
   {
     "slug": "forefallende-arbeid",
     "title": "Forefallende arbeid",
-    "shortDescription": "Vi hjelper med praktiske småjobber som holder eiendommen i god stand.",
-    "longDescription": "Forefallende arbeid dekker de små, men viktige oppgavene som oppstår i hverdagen. Vi utfører enkle reparasjoner, justeringer og monteringsarbeid som holder eiendommen i god stand. Rask oppfølging og effektiv gjennomføring gjør at problemer løses før de skaper unødvendig frustrasjon eller ekstra kostnader.",
+    "shortDescription": "Små og mellomstore oppgaver fikset raskt – praktisk hjelp når dere trenger det.",
+    "longDescription": "Forefallende arbeid er alt det som alltid dukker opp: en list som har løsnet, en dør som subber, en krok som må monteres, eller et fellesområde som trenger opprydding. Vi tar tak i oppgavene fortløpende og holder dere oppdatert på hva som er gjort. Dette er ofte det som skaper mest “støy” i hverdagen – og det vi løser mest effektivt.",
+    "bullets": [
+      "Montering/utskifting av smådeler og beslag",
+      "Enkle reparasjoner inne og ute",
+      "Rydding/bortkjøring (etter avtale)",
+      "Oppheng/montering (skilt, kroker, småinstallasjoner)",
+      "Små vedlikeholdsoppgaver som sparer tid og frustrasjon"
+    ],
     "heroColor": "#8a5a3a"
   }
 ]
