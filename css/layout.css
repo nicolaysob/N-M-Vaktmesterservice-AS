@@ -48,7 +48,15 @@
 }
 
 .hero-content {
-  max-width: 600px;
+  max-width: 720px;
+}
+
+@media (min-width: 761px) {
+  .hero-content {
+    text-align: left;
+    margin-left: clamp(2rem, 8vw, 140px);
+    margin-right: auto;
+  }
 }
 
 .hero-actions {
