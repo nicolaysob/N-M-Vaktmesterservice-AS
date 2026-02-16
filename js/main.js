@@ -77,10 +77,7 @@ async function fetchServices() {
 }
 
 function getServiceSlug() {
-  const querySlug = new URLSearchParams(window.location.search).get('slug');
-  const fallbackSlug = document.body.dataset.slug || '';
-
-  return querySlug || fallbackSlug;
+  return new URLSearchParams(window.location.search).get('slug') || '';
 }
 
 function setMetaTag(selector, value) {
@@ -118,10 +115,9 @@ function updateServiceSeo({ title, description }) {
 async function loadServiceContent() {
   const serviceTitle = document.getElementById('service-title');
   const serviceDescription = document.getElementById('service-description');
-  const serviceHero = document.getElementById('service-hero');
   const serviceBackLink = document.getElementById('service-back-link');
 
-  if (!serviceTitle || !serviceDescription || !serviceHero) {
+  if (!serviceTitle || !serviceDescription) {
     return;
   }
 
@@ -131,15 +127,12 @@ async function loadServiceContent() {
   const service = services.find((item) => item.slug === slug);
 
   if (!service) {
-    document.title = 'Tjeneste ikke funnet | N&M Vaktmesterservice AS';
-    serviceTitle.textContent = 'Tjeneste ikke funnet';
-    serviceDescription.textContent =
-      'Beklager, vi fant ikke tjenesten du leter etter. Se oversikten over alle tjenester.';
+    const notFoundTitle = 'Tjeneste ikke funnet | N&M Vaktmesterservice AS';
+    const notFoundDescription = 'Beklager, vi fant ikke tjenesten du leter etter.';
 
     document.title = notFoundTitle;
     serviceTitle.textContent = 'Tjeneste ikke funnet';
     serviceDescription.textContent = notFoundDescription;
-    serviceHero.style.background = 'linear-gradient(180deg, #eef4f8 0%, #f6f8fb 100%)';
     updateServiceSeo({
       title: notFoundTitle,
       description: notFoundDescription,
@@ -148,7 +141,7 @@ async function loadServiceContent() {
 
     if (serviceBackLink) {
       serviceBackLink.textContent = 'Tilbake til tjenester';
-      serviceBackLink.setAttribute('href', './index.html');
+      serviceBackLink.setAttribute('href', 'index.html');
     }
 
     return;
@@ -159,7 +152,6 @@ async function loadServiceContent() {
   document.title = seoTitle;
   serviceTitle.textContent = service.title;
   serviceDescription.textContent = service.longDescription;
-  serviceHero.style.backgroundColor = service.heroColor;
   updateServiceSeo({
     title: seoTitle,
     description: service.longDescription,
@@ -168,7 +160,7 @@ async function loadServiceContent() {
 
   if (serviceBackLink) {
     serviceBackLink.textContent = 'Tilbake til tjenester';
-    serviceBackLink.setAttribute('href', './index.html');
+    serviceBackLink.setAttribute('href', 'index.html');
   }
 }
 
