@@ -27,13 +27,122 @@
     <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/layout.css" />
     <link rel="stylesheet" href="css/components.css" />
+    <style>
+      .company-timeline {
+        margin-top: 2rem;
+      }
+
+      .company-timeline-track {
+        position: relative;
+        list-style: none;
+        margin: 2rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      }
+
+      .company-timeline-track::before {
+        content: "";
+        position: absolute;
+        top: 1.7rem;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: currentColor;
+        opacity: 0.4;
+      }
+
+      .company-timeline-item {
+        position: relative;
+        padding-top: 3.2rem;
+      }
+
+      .company-timeline-item::before {
+        content: "";
+        position: absolute;
+        top: 1.35rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12px;
+        height: 12px;
+        border: 2px solid currentColor;
+        border-radius: 50%;
+        background: #fff;
+      }
+
+      .company-timeline-card {
+        border: 1px solid currentColor;
+        border-radius: 999px;
+        text-align: center;
+        min-height: 110px;
+        display: grid;
+        place-content: center;
+        gap: 0.4rem;
+        padding: 1rem;
+        background: #fff;
+      }
+
+      .company-timeline-year {
+        display: block;
+        font-weight: 700;
+        line-height: 1.25;
+      }
+
+      .company-timeline-event {
+        margin: 0;
+        font-size: 0.95rem;
+        line-height: 1.35;
+      }
+    </style>
   </head>
   <body>
     <div id="site-header"></div>
 
     <main class="container section-spacing">
       <h1>Om oss</h1>
-      <p>Innhold kommer.</p>
+      <p>
+        N&amp;M Vaktmesterservice AS er en generasjonsbedrift med kontinuerlig drift siden 1996.<br />
+        Virksomheten startet som et enkeltpersonforetak under navnet Geirs Vaktmestertjenester, etablert av Geir Søberg. De første oppdragene ble inngått med Kirsebærhagan Borettslag, før porteføljen gradvis ble utvidet med Sandegrenda Borettslag, Jernbanegata Borettslag og Kirsebærhagan 3–59 Sameie. Sentrumsgården kom til samme år som Sten Egil Søberg overtok driften.<br />
+        Sten Egil Søberg, sønn av grunnlegger Geir Søberg, overtok virksomheten i 2016 og videreførte driften under Geir Service AS.<br />
+        I dag drives selskapet av Nicolay Søberg og Magnus Meyborg. Nicolay representerer tredje generasjon i virksomheten, og sammen bygger de videre på nesten 30 års erfaring innen vaktmester- og vedlikeholdstjenester.
+      </p>
+
+      <section class="company-timeline" aria-labelledby="selskapsutvikling-title">
+        <h2 id="selskapsutvikling-title">Selskapsutvikling</h2>
+        <ul class="company-timeline-track">
+          <li class="company-timeline-item">
+            <article class="company-timeline-card">
+              <span class="company-timeline-year">1996–2008</span>
+              <p class="company-timeline-event">Enkeltpersonforetak</p>
+            </article>
+          </li>
+          <li class="company-timeline-item">
+            <article class="company-timeline-card">
+              <span class="company-timeline-year">2008–2013</span>
+              <p class="company-timeline-event">NUF – Geir Vaktmester og Sjåførtjenester LTD</p>
+            </article>
+          </li>
+          <li class="company-timeline-item">
+            <article class="company-timeline-card">
+              <span class="company-timeline-year">2013–2025</span>
+              <p class="company-timeline-event">Geir Service AS</p>
+            </article>
+          </li>
+          <li class="company-timeline-item">
+            <article class="company-timeline-card">
+              <span class="company-timeline-year">2016</span>
+              <p class="company-timeline-event">Sten Egil Søberg overtok driften</p>
+            </article>
+          </li>
+          <li class="company-timeline-item">
+            <article class="company-timeline-card">
+              <span class="company-timeline-year">2026–</span>
+              <p class="company-timeline-event">N&amp;M Vaktmesterservice AS</p>
+            </article>
+          </li>
+        </ul>
+      </section>
     </main>
 
     <div id="site-footer"></div>
