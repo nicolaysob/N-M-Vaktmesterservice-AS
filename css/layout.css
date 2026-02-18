@@ -63,8 +63,9 @@
   position: relative;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   padding: clamp(2.5rem, 6vw, 5rem) 0;
+  padding-top: 140px;
 }
 
 .hero::before {
@@ -238,6 +239,13 @@
   height: 30px !important;
   max-height: 30px !important;
   width: auto !important;
+}
+
+@media (min-width: 769px) {
+  .site-logo__img {
+    height: 36px !important;
+    max-height: 36px !important;
+  }
 }
 
 .site-header .container,
