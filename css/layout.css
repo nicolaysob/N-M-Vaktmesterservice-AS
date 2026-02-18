@@ -4,12 +4,14 @@
 }
 
 .site-header {
-  position: sticky;
+  position: absolute;
   top: 0;
+  left: 0;
+  width: 100%;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-border);
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: none;
   padding: 6px 0;
 }
 
@@ -58,11 +60,34 @@
 }
 
 .hero {
-  min-height: 500px;
-  height: 85vh;
+  position: relative;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   padding: clamp(2.5rem, 6vw, 5rem) 0;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.25) 0%,
+    rgba(0,0,0,0.45) 55%,
+    rgba(0,0,0,0.55) 100%
+  );
+}
+
+.hero > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+.site-header a,
+.site-header .nav a {
+  color: white;
 }
 
 .hero-content {
@@ -188,8 +213,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    height: auto;
-    min-height: 500px;
+    min-height: 100vh;
     background-position: 72% center;
   }
 
