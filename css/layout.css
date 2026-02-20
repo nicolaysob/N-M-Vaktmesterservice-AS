@@ -17,9 +17,9 @@
   position: absolute;
   left: 0;
   right: 0;
-  background: transparent;
-  backdrop-filter: none;
-  border-bottom: none;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .page-default main {
@@ -52,9 +52,10 @@
 }
 
 .site-logo__img {
-  height: 34px !important;
+  height: 38px !important;
   width: auto;
-  max-height: 34px;
+  max-height: 38px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.8));
 }
 
 .main-nav {
@@ -258,15 +259,15 @@
 
 .site-logo__img,
 .site-logo img {
-  height: 30px !important;
-  max-height: 30px !important;
+  height: 34px !important;
+  max-height: 34px !important;
   width: auto !important;
 }
 
 @media (min-width: 769px) {
   .site-logo__img {
-    height: 36px !important;
-    max-height: 36px !important;
+    height: 40px !important;
+    max-height: 40px !important;
   }
 }
 
