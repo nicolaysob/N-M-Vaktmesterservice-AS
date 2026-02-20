@@ -7,9 +7,10 @@
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--color-border);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
   padding: 6px 0;
 }
 
@@ -17,9 +18,10 @@
   position: absolute;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .page-default main {
@@ -43,6 +45,8 @@
   align-items: center;
   line-height: 0;
   flex: 0 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 @media (min-width: 769px) {
@@ -60,6 +64,8 @@
 
 .main-nav {
   margin-left: auto;
+  position: relative;
+  z-index: 1;
 }
 
 .nav-list {
@@ -67,6 +73,11 @@
   align-items: center;
   gap: 1.2rem;
   font-weight: 600;
+}
+
+.site-header a {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
 }
 
 .services,
