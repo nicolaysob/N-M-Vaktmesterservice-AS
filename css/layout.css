@@ -4,15 +4,26 @@
 }
 
 .site-header {
-  position: absolute;
+  position: sticky;
   top: 0;
-  left: 0;
-  width: 100%;
   z-index: 20;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 6px 0;
+}
+
+.page-home .site-header {
+  position: absolute;
+  left: 0;
+  right: 0;
   background: transparent;
   backdrop-filter: none;
   border-bottom: none;
-  padding: 6px 0;
+}
+
+.page-default main {
+  padding-top: 24px;
 }
 
 .site-header .container,
@@ -59,7 +70,7 @@
   padding: clamp(3rem, 6vw, 5rem) 0;
 }
 
-.hero {
+.page-home .hero {
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -68,7 +79,7 @@
   padding-top: 140px;
 }
 
-.hero::before {
+.page-home .hero::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -80,30 +91,34 @@
   );
 }
 
-.hero > * {
+.page-home .hero > * {
   position: relative;
   z-index: 2;
 }
 
 
-.site-header a,
-.site-header .nav a {
-  color: white;
+.page-home .site-header a,
+.page-home .site-header .nav a {
+  color: #fff;
 }
 
-.hero-content {
+.page-home .hero h1 {
+  color: #fff;
+}
+
+.page-home .hero-content {
   max-width: 720px;
 }
 
 @media (min-width: 761px) {
-  .hero-content {
+  .page-home .hero-content {
     text-align: left;
     margin-left: clamp(2rem, 8vw, 140px);
     margin-right: auto;
   }
 }
 
-.hero-actions {
+.page-home .hero-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -213,7 +228,7 @@
 }
 
 @media (max-width: 768px) {
-  .hero {
+  .page-home .hero {
     min-height: 100vh;
     background-position: 72% center;
   }
