@@ -40,7 +40,7 @@
 
 .site-logo {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-end;
   gap: 0.55rem;
   line-height: 1;
   flex: 0 0 auto;
