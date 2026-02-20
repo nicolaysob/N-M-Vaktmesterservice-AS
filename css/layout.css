@@ -270,23 +270,23 @@
 
 .site-logo__img,
 .site-logo img {
-  height: 34px !important;
-  max-height: 34px !important;
+  height: 42px !important;
+  max-height: 42px !important;
   width: auto !important;
 }
 
 @media (min-width: 769px) {
   .site-logo__img {
-    height: 40px !important;
-    max-height: 40px !important;
+    height: 50px !important;
+    max-height: 50px !important;
   }
 }
 
 .site-header .container,
 .site-header .header-inner {
-  min-height: 48px !important;
+  min-height: 58px !important;
 }
 
 .site-header {
-  padding: 4px 0 !important;
+  padding: 6px 0 !important;
 }
