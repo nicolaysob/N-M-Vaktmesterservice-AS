@@ -269,21 +269,21 @@
 
 .site-logo__img,
 .site-logo img {
-  height: 42px !important;
-  max-height: 42px !important;
+  height: 52px !important;
+  max-height: 52px !important;
   width: auto !important;
 }
 
 @media (min-width: 769px) {
   .site-logo__img {
-    height: 50px !important;
-    max-height: 50px !important;
+    height: 62px !important;
+    max-height: 62px !important;
   }
 }
 
 .site-header .container,
 .site-header .header-inner {
-  min-height: 58px !important;
+  min-height: 70px !important;
 }
 
 .site-header {
