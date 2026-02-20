@@ -114,6 +114,7 @@
 
 .page-home .hero-content {
   max-width: 720px;
+  margin-top: clamp(5rem, 12vw, 11rem);
 }
 
 @media (min-width: 761px) {
