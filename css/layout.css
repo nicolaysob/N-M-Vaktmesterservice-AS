@@ -45,6 +45,12 @@
   flex: 0 0 auto;
 }
 
+@media (min-width: 769px) {
+  .site-logo {
+    margin-left: -5rem;
+  }
+}
+
 .site-logo__img {
   height: 34px !important;
   width: auto;
