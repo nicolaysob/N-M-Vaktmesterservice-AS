@@ -24,9 +24,39 @@
       content="Velg riktig kontaktvei hos N&amp;M Vaktmesterservice AS for privat hjelp, fast kontrakt eller enkeltoppdrag."
     />
     <meta name="twitter:image" content="https://nicolaysob.github.io/assets/og-image.png" />
-    <link rel="stylesheet" href="../css/base.css" />
-    <link rel="stylesheet" href="../css/layout.css" />
-    <link rel="stylesheet" href="../css/components.css" />
+    <script>
+      (function () {
+        const REPO_PATH = '/N-M-Vaktmesterservice-AS';
+        const isGitHubPages = window.location.hostname.endsWith('github.io');
+        const basePath = isGitHubPages ? REPO_PATH : '';
+
+        window.BASE_PATH = basePath;
+        window.withBasePath = function withBasePath(path) {
+          if (!path || /^(https?:|mailto:|tel:|data:|#)/.test(path)) {
+            return path;
+          }
+
+          const normalizedPath = path.startsWith('/') ? path : `/${path.replace(/^\.?\/+/, '')}`;
+
+          if (!basePath) {
+            return normalizedPath;
+          }
+
+          if (normalizedPath.startsWith(`${REPO_PATH}/`) || normalizedPath === REPO_PATH) {
+            return normalizedPath;
+          }
+
+          return `${basePath}${normalizedPath}`;
+        };
+
+        ['/css/base.css', '/css/layout.css', '/css/components.css'].forEach((href) => {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = window.withBasePath(href);
+          document.head.appendChild(link);
+        });
+      })();
+    </script>
   </head>
   <body class="page-default">
     <div id="site-header"></div>
@@ -45,19 +75,19 @@
             <article class="cta-box">
               <h2>Privat</h2>
               <p>Hjelp til bolig, uteområde eller vedlikehold hjemme.</p>
-              <a class="button button-primary" href="privat/">Kontakt oss</a>
+              <a class="button button-primary" href="/kontakt/privat/">Kontakt oss</a>
             </article>
 
             <article class="cta-box">
               <h2>Fast kontrakt</h2>
               <p>For borettslag, sameier og næring som trenger forutsigbar drift.</p>
-              <a class="button button-primary" href="fast-kontrakt/">Be om tilbud</a>
+              <a class="button button-primary" href="/kontakt/fast-kontrakt/">Be om tilbud</a>
             </article>
 
             <article class="cta-box">
               <h2>Enkeltoppdrag</h2>
               <p>For konkrete oppdrag med avtalt omfang og leveranse.</p>
-              <a class="button button-primary" href="enkeltoppdrag/">Be om tilbud</a>
+              <a class="button button-primary" href="/kontakt/enkeltoppdrag/">Be om tilbud</a>
             </article>
           </div>
         </div>
@@ -66,6 +96,12 @@
 
     <div id="site-footer"></div>
 
-    <script src="../js/main.js"></script>
+    <script>
+      (function () {
+        const script = document.createElement('script');
+        script.src = (window.withBasePath || ((path) => path))('/js/main.js');
+        document.body.appendChild(script);
+      })();
+    </script>
   </body>
 </html>

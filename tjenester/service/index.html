@@ -24,9 +24,39 @@
       content="Les mer om tjenesten fra N&amp;M Vaktmesterservice AS."
     />
     <meta name="twitter:image" content="https://nicolaysob.github.io/assets/og-image.png" />
-    <link rel="stylesheet" href="../../css/base.css" />
-    <link rel="stylesheet" href="../../css/layout.css" />
-    <link rel="stylesheet" href="../../css/components.css" />
+    <script>
+      (function () {
+        const REPO_PATH = '/N-M-Vaktmesterservice-AS';
+        const isGitHubPages = window.location.hostname.endsWith('github.io');
+        const basePath = isGitHubPages ? REPO_PATH : '';
+
+        window.BASE_PATH = basePath;
+        window.withBasePath = function withBasePath(path) {
+          if (!path || /^(https?:|mailto:|tel:|data:|#)/.test(path)) {
+            return path;
+          }
+
+          const normalizedPath = path.startsWith('/') ? path : `/${path.replace(/^\.?\/+/, '')}`;
+
+          if (!basePath) {
+            return normalizedPath;
+          }
+
+          if (normalizedPath.startsWith(`${REPO_PATH}/`) || normalizedPath === REPO_PATH) {
+            return normalizedPath;
+          }
+
+          return `${basePath}${normalizedPath}`;
+        };
+
+        ['/css/base.css', '/css/layout.css', '/css/components.css'].forEach((href) => {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = window.withBasePath(href);
+          document.head.appendChild(link);
+        });
+      })();
+    </script>
   </head>
   <body class="page-default" data-slug="">
     <div id="site-header"></div>
@@ -36,13 +66,19 @@
       <p id="service-intro"></p>
       <p id="service-description"></p>
       <ul id="service-bullets"></ul>
-      <a class="button button-secondary" id="service-back-link" href="../"
+      <a class="button button-secondary" id="service-back-link" href="/tjenester/"
         >Tilbake til tjenester</a
       >
     </main>
 
     <div id="site-footer"></div>
 
-    <script src="../../js/main.js"></script>
+    <script>
+      (function () {
+        const script = document.createElement('script');
+        script.src = (window.withBasePath || ((path) => path))('/js/main.js');
+        document.body.appendChild(script);
+      })();
+    </script>
   </body>
 </html>
