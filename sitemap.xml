@@ -4,33 +4,30 @@
     <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/</loc>
   </url>
   <url>
-    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/index.html</loc>
+    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/om-oss/</loc>
   </url>
   <url>
-    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/kontakt.html</loc>
+    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/tjenester/</loc>
   </url>
   <url>
-    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/personvern.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/takk.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/tjenester/index.html</loc>
-  </url>
-  <url>
-    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/tjenester/service.html</loc>
+    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/tjenester/service/</loc>
   </url>
   <url>
     <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/kontakt/</loc>
   </url>
   <url>
-    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/kontakt/privat.html</loc>
+    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/kontakt/privat/</loc>
   </url>
   <url>
-    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/kontakt/fast-kontrakt.html</loc>
+    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/kontakt/fast-kontrakt/</loc>
   </url>
   <url>
-    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/kontakt/enkeltoppdrag.html</loc>
+    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/kontakt/enkeltoppdrag/</loc>
+  </url>
+  <url>
+    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/personvern/</loc>
+  </url>
+  <url>
+    <loc>https://nicolaysob.github.io/N-M-Vaktmesterservice-AS/takk/</loc>
   </url>
 </urlset>
