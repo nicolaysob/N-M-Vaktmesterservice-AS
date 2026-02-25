@@ -9,10 +9,22 @@ function getBasePath() {
 }
 
 function rewriteInternalPathsForSubdirectory() {
-  if (!window.location.pathname.includes('/tjenester/') && !window.location.pathname.includes('/kontakt/')) {
+  const basePath = getBasePath();
+  const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
+  let relativePath = window.location.pathname;
+
+  if (relativePath.startsWith(normalizedBasePath)) {
+    relativePath = relativePath.slice(normalizedBasePath.length);
+  }
+
+  relativePath = relativePath.replace(/^\/+|\/+$/g, '');
+
+  if (!relativePath) {
     return;
   }
 
+  const depth = relativePath.split('/').filter(Boolean).length;
+  const prefix = '../'.repeat(depth);
   const selectors = [
     ['href', 'a[href], link[href]'],
     ['src', '[src]'],
@@ -28,8 +40,8 @@ function rewriteInternalPathsForSubdirectory() {
 
       if (
         value.startsWith('../') ||
-        value.startsWith('./') ||
         value.startsWith('#') ||
+        value.startsWith('/') ||
         value.startsWith('http://') ||
         value.startsWith('https://') ||
         value.startsWith('mailto:') ||
@@ -39,10 +51,11 @@ function rewriteInternalPathsForSubdirectory() {
         return;
       }
 
-      element.setAttribute(attribute, `../${value}`);
+      element.setAttribute(attribute, `${prefix}${value}`);
     });
   });
 }
+
 
 async function loadPartial(targetId, partialPath) {
   const target = document.getElementById(targetId);
@@ -104,10 +117,23 @@ function setMetaTag(selector, value) {
 }
 
 
+function normalizeCanonicalPath(pathname) {
+  if (pathname === '/index.html') {
+    return '/';
+  }
+
+  if (pathname.endsWith('/index.html')) {
+    return `${pathname.slice(0, -'index.html'.length)}`;
+  }
+
+  return pathname;
+}
+
 function updateCanonicalAndOgUrl(includeSearch = false) {
   const canonicalLink = document.getElementById('canonical-link');
   const ogUrl = document.getElementById('og-url');
-  const baseUrl = `${window.location.origin}${window.location.pathname}`;
+  const normalizedPath = normalizeCanonicalPath(window.location.pathname);
+  const baseUrl = `${window.location.origin}${normalizedPath}`;
   const finalUrl = includeSearch ? `${baseUrl}${window.location.search}` : baseUrl;
 
   if (canonicalLink) {
@@ -166,7 +192,7 @@ async function loadServiceContent() {
 
     if (serviceBackLink) {
       serviceBackLink.textContent = 'Tilbake til tjenester';
-      serviceBackLink.setAttribute('href', `${basePath}tjenester/index.html`);
+      serviceBackLink.setAttribute('href', `${basePath}tjenester/`);
     }
 
     return;
@@ -192,7 +218,7 @@ async function loadServiceContent() {
 
   if (serviceBackLink) {
     serviceBackLink.textContent = 'Tilbake til tjenester';
-    serviceBackLink.setAttribute('href', `${basePath}tjenester/index.html`);
+    serviceBackLink.setAttribute('href', `${basePath}tjenester/`);
   }
 }
 
@@ -203,7 +229,7 @@ function createServiceCard(service) {
     <article class="service-card">
       <h3>${service.title}</h3>
       <p>${service.shortDescription}</p>
-      <a class="button button-link" href="${basePath}tjenester/service.html?slug=${encodeURIComponent(service.slug)}">Les mer</a>
+      <a class="button button-link" href="${basePath}tjenester/service/?slug=${encodeURIComponent(service.slug)}">Les mer</a>
     </article>
   `;
 }
