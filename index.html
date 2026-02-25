@@ -41,9 +41,39 @@
         "areaServed": "Vestfold"
       }
     </script>
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/layout.css" />
-    <link rel="stylesheet" href="css/components.css" />
+    <script>
+      (function () {
+        const REPO_PATH = '/N-M-Vaktmesterservice-AS';
+        const isGitHubPages = window.location.hostname.endsWith('github.io');
+        const basePath = isGitHubPages ? REPO_PATH : '';
+
+        window.BASE_PATH = basePath;
+        window.withBasePath = function withBasePath(path) {
+          if (!path || /^(https?:|mailto:|tel:|data:|#)/.test(path)) {
+            return path;
+          }
+
+          const normalizedPath = path.startsWith('/') ? path : `/${path.replace(/^\.?\/+/, '')}`;
+
+          if (!basePath) {
+            return normalizedPath;
+          }
+
+          if (normalizedPath.startsWith(`${REPO_PATH}/`) || normalizedPath === REPO_PATH) {
+            return normalizedPath;
+          }
+
+          return `${basePath}${normalizedPath}`;
+        };
+
+        ['/css/base.css', '/css/layout.css', '/css/components.css'].forEach((href) => {
+          const link = document.createElement('link');
+          link.rel = 'stylesheet';
+          link.href = window.withBasePath(href);
+          document.head.appendChild(link);
+        });
+      })();
+    </script>
   </head>
   <body class="page-home home">
     <div id="site-header"></div>
@@ -74,7 +104,7 @@
               </p>
               <a
                 class="button button-link"
-                href="tjenester/service/?slug=vaktmestertjenester"
+                href="/tjenester/service/?slug=vaktmestertjenester"
                 >Les mer</a
               >
             </article>
@@ -87,7 +117,7 @@
               </p>
               <a
                 class="button button-link"
-                href="tjenester/service/?slug=sesongtjenester"
+                href="/tjenester/service/?slug=sesongtjenester"
                 >Les mer</a
               >
             </article>
@@ -100,7 +130,7 @@
               </p>
               <a
                 class="button button-link"
-                href="tjenester/service/?slug=renholdstjenester"
+                href="/tjenester/service/?slug=renholdstjenester"
                 >Les mer</a
               >
             </article>
@@ -113,7 +143,7 @@
               </p>
               <a
                 class="button button-link"
-                href="tjenester/service/?slug=forefallende-arbeid"
+                href="/tjenester/service/?slug=forefallende-arbeid"
                 >Les mer</a
               >
             </article>
@@ -178,7 +208,7 @@
             N&amp;M Vaktmesterservice AS har levert vaktmestertjenester siden 1996 og hjelper
             borettslag og bedrifter med drift, snørydding, plenklipp og vedlikehold i Vestfold.
           </p>
-          <a class="button button-link" href="om-oss/">Les mer om oss</a>
+          <a class="button button-link" href="/om-oss/">Les mer om oss</a>
         </div>
       </section>
 
@@ -187,19 +217,19 @@
           <article class="cta-box">
             <h2>Trenger du hjelp som privatperson?</h2>
             <p>Vi tilbyr fleksible tjenester når du trenger hjelp med vedlikehold, tilsyn eller sesongoppgaver.</p>
-            <a class="button button-primary" href="kontakt/privat/">Kontakt oss</a>
+            <a class="button button-primary" href="/kontakt/privat/">Kontakt oss</a>
           </article>
 
           <article class="cta-box">
             <h2>Faste kontrakter</h2>
             <p>Vi leverer forutsigbar drift og oppfølging for borettslag og næring med avtaler tilpasset behovene deres.</p>
-            <a class="button button-primary" href="kontakt/fast-kontrakt/">Be om tilbud</a>
+            <a class="button button-primary" href="/kontakt/fast-kontrakt/">Be om tilbud</a>
           </article>
 
           <article class="cta-box">
             <h2>Enkeltoppdrag for borettslag og næring</h2>
             <p>Vi utfører også enkeltstående oppdrag for borettslag, sameier og bedrifter som ikke har behov for fast avtale. Enten det gjelder sesongarbeid, vedlikehold eller konkrete utbedringer, leverer vi strukturert og effektivt etter avtalt omfang.</p>
-            <a class="button button-primary" href="kontakt/enkeltoppdrag/">Be om tilbud</a>
+            <a class="button button-primary" href="/kontakt/enkeltoppdrag/">Be om tilbud</a>
           </article>
         </div>
       </section>
@@ -208,6 +238,6 @@
 
     <div id="site-footer"></div>
 
-    <script src="js/main.js"></script>
+    <script src="/N-M-Vaktmesterservice-AS/js/main.js" defer></script>
   </body>
 </html>

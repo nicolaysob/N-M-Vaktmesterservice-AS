@@ -1,33 +1,61 @@
+const REPO_PATH = '/N-M-Vaktmesterservice-AS';
+
+function normalizeBasePath(basePath) {
+  if (!basePath || basePath === '/') {
+    return '';
+  }
+
+  return basePath.replace(/\/+$/, '');
+}
+
 function getBasePath() {
+  if (typeof window.BASE_PATH === 'string') {
+    return normalizeBasePath(window.BASE_PATH);
+  }
+
   if (window.location.hostname.endsWith('github.io')) {
     const [firstSegment = ''] = window.location.pathname.split('/').filter(Boolean);
 
-    return firstSegment ? `/${firstSegment}/` : '/';
+    return normalizeBasePath(firstSegment ? `/${firstSegment}` : REPO_PATH);
   }
 
-  return '/';
+  return '';
 }
 
-function rewriteInternalPathsForSubdirectory() {
+function buildBaseUrl(path) {
+  const normalizedPath = path.startsWith('/') ? path : `/${path.replace(/^\.?\/+/, '')}`;
+
+  return `${getBasePath()}${normalizedPath}`;
+}
+
+function withBasePath(path) {
+  if (!path || /^(https?:|mailto:|tel:|data:|#|javascript:)/.test(path)) {
+    return path;
+  }
+
   const basePath = getBasePath();
-  const normalizedBasePath = basePath.endsWith('/') ? basePath : `${basePath}/`;
-  let relativePath = window.location.pathname;
+  const normalizedPath = path.startsWith('/') ? path : `/${path.replace(/^\.?\/+/, '')}`;
 
-  if (relativePath.startsWith(normalizedBasePath)) {
-    relativePath = relativePath.slice(normalizedBasePath.length);
+  if (!basePath) {
+    return normalizedPath;
   }
 
-  relativePath = relativePath.replace(/^\/+|\/+$/g, '');
-
-  if (!relativePath) {
-    return;
+  if (normalizedPath === basePath || normalizedPath.startsWith(`${basePath}/`)) {
+    return normalizedPath;
   }
 
-  const depth = relativePath.split('/').filter(Boolean).length;
-  const prefix = '../'.repeat(depth);
+  if (normalizedPath === REPO_PATH || normalizedPath.startsWith(`${REPO_PATH}/`)) {
+    return `${basePath}${normalizedPath.slice(REPO_PATH.length)}`;
+  }
+
+  return `${basePath}${normalizedPath}`;
+}
+
+function rewriteInternalDomPaths() {
   const selectors = [
-    ['href', 'a[href], link[href]'],
+    ['href', '[href]'],
     ['src', '[src]'],
+    ['action', 'form[action]'],
   ];
 
   selectors.forEach(([attribute, selector]) => {
@@ -38,58 +66,52 @@ function rewriteInternalPathsForSubdirectory() {
         return;
       }
 
-      if (
-        value.startsWith('../') ||
-        value.startsWith('#') ||
-        value.startsWith('/') ||
-        value.startsWith('http://') ||
-        value.startsWith('https://') ||
-        value.startsWith('mailto:') ||
-        value.startsWith('tel:') ||
-        value.startsWith('data:')
-      ) {
-        return;
-      }
-
-      element.setAttribute(attribute, `${prefix}${value}`);
+      element.setAttribute(attribute, withBasePath(value));
     });
   });
 }
 
 
-async function loadPartial(targetId, partialPath) {
-  const target = document.getElementById(targetId);
+async function loadPartial(containerId, file) {
+  const container = document.getElementById(containerId);
 
-  if (!target) {
+  if (!container) {
+    console.error(`Missing container: #${containerId}`);
     return;
   }
 
-  const response = await fetch(partialPath);
+  const BASE_PATH = getBasePath();
+  const url = `${BASE_PATH}/partials/${file}`;
 
-  if (!response.ok) {
-    throw new Error(`Kunne ikke laste ${partialPath}`);
+  try {
+    const res = await fetch(url);
+
+    if (!res.ok) {
+      console.error(`Failed to fetch ${url}:`, res.status);
+      return;
+    }
+
+    const html = await res.text();
+    container.innerHTML = html;
+  } catch (err) {
+    console.error(`Error fetching ${url}:`, err);
   }
-
-  target.innerHTML = await response.text();
 }
 
 async function loadSharedLayout() {
-  const basePath = getBasePath();
-
   await Promise.all([
-    loadPartial('site-header', `${basePath}partials/header.html`),
-    loadPartial('site-footer', `${basePath}partials/footer.html`),
+    loadPartial('site-header', 'header.html'),
+    loadPartial('site-footer', 'footer.html'),
   ]);
 
-  rewriteInternalPathsForSubdirectory();
+  rewriteInternalDomPaths();
 }
 
 async function fetchServices() {
-  const basePath = getBasePath();
   let response;
 
   try {
-    response = await fetch(`${basePath}data/services.json?v=${Date.now()}`, { cache: 'no-store' });
+    response = await fetch(buildBaseUrl(`/data/services.json?v=${Date.now()}`), { cache: 'no-store' });
   } catch (error) {
     console.error('Kunne ikke hente data/services.json.', error);
     throw error;
@@ -168,7 +190,6 @@ async function loadServiceContent() {
   }
 
   const services = await fetchServices();
-  const basePath = getBasePath();
   const slug = getServiceSlug();
   const hasSlugInUrl = new URLSearchParams(window.location.search).has('slug');
   const service = services.find((item) => item.slug === slug);
@@ -192,7 +213,7 @@ async function loadServiceContent() {
 
     if (serviceBackLink) {
       serviceBackLink.textContent = 'Tilbake til tjenester';
-      serviceBackLink.setAttribute('href', `${basePath}tjenester/`);
+      serviceBackLink.setAttribute('href', withBasePath('/tjenester/'));
     }
 
     return;
@@ -218,18 +239,16 @@ async function loadServiceContent() {
 
   if (serviceBackLink) {
     serviceBackLink.textContent = 'Tilbake til tjenester';
-    serviceBackLink.setAttribute('href', `${basePath}tjenester/`);
+    serviceBackLink.setAttribute('href', withBasePath('/tjenester/'));
   }
 }
 
 function createServiceCard(service) {
-  const basePath = getBasePath();
-
   return `
     <article class="service-card">
       <h3>${service.title}</h3>
       <p>${service.shortDescription}</p>
-      <a class="button button-link" href="${basePath}tjenester/service/?slug=${encodeURIComponent(service.slug)}">Les mer</a>
+      <a class="button button-link" href="${withBasePath(`/tjenester/service/?slug=${encodeURIComponent(service.slug)}`)}">Les mer</a>
     </article>
   `;
 }
@@ -278,4 +297,16 @@ async function init() {
   }
 }
 
-document.addEventListener('DOMContentLoaded', init);
+function safeInit() {
+  try {
+    init();
+  } catch (e) {
+    console.error('Init failed:', e);
+  }
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', safeInit);
+} else {
+  safeInit();
+}

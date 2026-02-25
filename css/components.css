@@ -33,7 +33,7 @@
 
 .hero-title,
 .hero h1 {
-  font-size: clamp(1.85rem, 4.2vw, 3rem);
+  font-size: clamp(4rem, 5.2vw, 6rem);
   margin-bottom: 0.8rem;
   color: #ffffff;
 }
@@ -41,7 +41,7 @@
 .hero-subtitle {
   color: rgba(255, 255, 255, 0.95);
   max-width: 62ch;
-  font-size: 1.05rem;
+  font-size: clamp(1.5rem, 1.7vw, 2rem);
 }
 
 .section-title,
@@ -60,7 +60,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  padding: 1.25rem;
+  padding: 1.6rem;
 }
 
 .service-card {
@@ -74,8 +74,9 @@
 }
 
 .service-card h3 {
-  margin-bottom: 0.55rem;
-  font-size: 1.18rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.9rem;
+  line-height: 1.15;
 }
 
 .service-card p,
@@ -83,6 +84,12 @@
 .footer-inner p {
   color: var(--color-muted);
 }
+
+.cta-box p {
+  font-size: 1.45rem;
+  line-height: 1.45;
+}
+
 
 .service-card .button-link {
   margin-top: auto;
@@ -95,8 +102,9 @@
   justify-content: center;
   border-radius: 8px;
   border: 1px solid transparent;
-  padding: 0.65rem 1.05rem;
+  padding: 0.85rem 1.55rem;
   font-weight: 700;
+  font-size: 1.15rem;
   line-height: 1;
   transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease,
     border-color 160ms ease, color 160ms ease;
@@ -236,7 +244,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  padding: 1.25rem;
+  padding: 1.6rem;
 }
 
 .reference-card p,
@@ -252,25 +260,27 @@
 
 .footer-inner {
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.1rem;
+  gap: 2rem;
 }
 
 .footer-column h3 {
   margin-bottom: 0.5rem;
-  font-size: 1rem;
+  font-size: 1.9rem;
+  line-height: 1.2;
 }
 
 .footer-column ul {
   display: grid;
-  gap: 0.35rem;
+  gap: 0.8rem;
 }
 
 .footer-column a:not(.button) {
   color: var(--color-muted);
+  font-size: 1.15rem;
   text-decoration: underline;
   text-underline-offset: 2px;
 }
 
 .footer-column .button {
-  margin-top: 0.8rem;
+  margin-top: 1.25rem;
 }
